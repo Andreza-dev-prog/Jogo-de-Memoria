@@ -1,0 +1,180 @@
+/* 🎨 Estilos globais */
+:root {
+  --bg: #0f1724;
+  --card: #0b1220;
+  --accent: #60a5fa;
+  --card-face: #e2e8f0;
+  --text: #e6eef8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+
+  font-family: Inter, system-ui, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(180deg, var(--bg), rgb(37, 16, 37));
+  color: var(--text);
+}
+
+/* 📦 Layout principal */
+.wrap {
+  width: 100%;
+  max-width: 900px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: 20px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer {
+  margin-top: 14px;
+  font-size: 13px;
+  color: rgba(230, 238, 248, 0.8);
+}
+
+/* 🔘 Botões e selects */
+button,
+select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--card);
+  color: inherit;
+  cursor: pointer;
+}
+
+.small {
+  font-size: 12px;
+  color: rgba(230, 238, 248, 0.75);
+}
+
+/* 🃏 Tabuleiro e cartas */
+.board {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+}
+
+.board.easy {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.board.medium {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.board.hard {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.card {
+  width: 100%;
+  padding-top: 100%; /* mantém formato quadrado */
+  position: relative;
+  perspective: 800px;
+}
+
+.card > div {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  transform-style: preserve-3d;
+  transition: transform 0.45s;
+}
+
+.card.flip > div {
+  transform: rotateY(180deg);
+}
+
+/* Faces da carta */
+.face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  backface-visibility: hidden;
+  font-size: 32px;
+}
+
+.face.back {
+  background: linear-gradient(180deg, #0b1220, #0b1630);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.face.front {
+  background: var(--card-face);
+  color: #062235;
+  font-weight: 700;
+  transform: rotateY(180deg);
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* 🪟 Modal de vitória */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(6, 10, 17, 0.6);
+}
+
+.dialog {
+  min-width: 260px;
+  padding: 18px;
+  text-align: center;
+
+  background: #071029;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+}
+
+.dialog h2 {
+  margin-bottom: 8px;
+}
+
+/* 📱 Responsividade */
+@media (max-width: 600px) {
+  .board.medium {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .board.hard {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

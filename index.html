@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jogo da Memória — App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>🧠 Jogo da Memória</h1>
+      <div class="controls">
+        <label class="small">Nível
+          <select id="difficulty">
+            <option value="easy">Fácil (4x4)</option>
+            <option value="medium" selected>Médio (4x4)</option>
+            <option value="hard">Difícil (6x6)</option>
+          </select>
+        </label>
+        <button id="restart">Reiniciar</button>
+        <div class="stats">
+          <div>⏱ <span id="timer">00:00</span></div>
+          <div>🔁 Movimentos: <span id="moves">0</span></div>
+          <div>✅ Pares: <span id="matches">0</span></div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div id="board" class="board medium" aria-live="polite"></div>
+    </main>
+
+    <div class="footer">Dica: clique/toque nas cartas para virar. Combine todos os pares para vencer.</div>
+  </div>
+
+  <!-- Modal de vitória -->
+  <div id="winModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="dialog">
+      <h2>🎉 Você venceu!</h2>
+      <p class="small">Tempo: <span id="finalTime"></span> — Movimentos: <span id="finalMoves"></span></p>
+      <div style="margin-top:12px;display:flex;gap:8px;justify-content:center">
+        <button id="playAgain">Jogar novamente</button>
+        <button id="closeModal">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
